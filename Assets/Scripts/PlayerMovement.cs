@@ -8,15 +8,16 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anima;
     private BoxCollider2D coll;
+    private bool doubleJump;
 
     private float dirX = 0f;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 7f;
 
-    private enum MovementState { idle, running, jumping, falling};
-    private MovementState state = MovementState.idle;
-
+    private enum MovementState { idle, running, jumping, falling, doubleJump};
+    //private MovementState state = MovementState.idle;
+    [SerializeField] private AudioSource jumpSoundEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         anima = GetComponent<Animator>();
 
+
     }
 
     // Update is called once per frame
@@ -33,13 +35,19 @@ public class PlayerMovement : MonoBehaviour
     {
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        
 
         UpdateAnimationState();
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpSoundEffect.Play();
+            if (IsGrounded() || doubleJump)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+                doubleJump = !doubleJump;
+            }
         }
-        
     }
     private void UpdateAnimationState()
     {

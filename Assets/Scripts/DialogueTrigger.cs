@@ -1,30 +1,32 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueTrigger : MonoBehaviour
 {
     public Message[] messages;
-    public ActorID[] actors;
-    // Start is called before the first frame update
-    void Start()
+    public Actor[] actors;
+
+    public Message[] GetMessages()
     {
-        
+        return messages;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartDialogue(Message[] messages)
     {
-        
+        FindObjectOfType<DialogueManager>().OpenDialogue(messages, actors);
     }
     [System.Serializable]
     public class Message
     {
-        public int actorID;
+        public int ActorId;
         public string message;
     }
     [System.Serializable]
-    public class ActorID
+    public class Actor
     {
         public string name;
         public Sprite sprite;

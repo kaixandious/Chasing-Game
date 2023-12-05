@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 7.4248962, y: -0.42860413}
+  m_AnchoredPosition: {x: 7.1, y: 1.6813}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &96175225
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14017446, g: 0.6603774, b: 0.22264037, a: 1}
+  m_Color: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -64454,6 +64454,7 @@ GameObject:
   - component: {fileID: 1337390320}
   - component: {fileID: 1337390319}
   - component: {fileID: 1337390318}
+  - component: {fileID: 1337390322}
   - component: {fileID: 1337390321}
   m_Layer: 5
   m_Name: Button (Legacy)
@@ -64479,7 +64480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -507, y: -188}
+  m_AnchoredPosition: {x: -357.40002, y: -168}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1337390318
@@ -64495,7 +64496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -64525,7 +64526,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1337390319}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1337390322}
+        m_TargetAssemblyTypeName: DialogueTrigger, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1337390319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64546,7 +64559,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -64573,18 +64586,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1337390316}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e2bc06f0175f743a80922fa0f72f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorImage: {fileID: 0}
+  actorName: {fileID: 0}
+  messageText: {fileID: 0}
+  backgroundBox: {fileID: 0}
+--- !u!114 &1337390322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337390316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4e7b0168b3a9e94897dfd64149f1324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - actorID: 0
-    message: Oh! Hi there, Who are you?
-  - actorID: 0
-    message: Are you lost? It seem you are not from here.
-  - actorID: 0
-    message: 
-  - actorID: 0
-    message: 
+  - ActorId: 0
+    message: Oh! Hi there.
+  - ActorId: 0
+    message: Who are you? Are you lost?
+  - ActorId: 0
+    message: Wait! This dimension is only for student from Ninja Academy!
+  - ActorId: 0
+    message: How can you get lost in here?
+  - ActorId: 0
+    message: Alright, whatever the reason is. You are here now.
+  - ActorId: 0
+    message: Help me pass the examination. I will find a way out for you. Deal?
+  - ActorId: 0
+    message: Cool. Let's go!
   actors: []
 --- !u!1001 &1343229033
 PrefabInstance:
@@ -68009,12 +68044,12 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

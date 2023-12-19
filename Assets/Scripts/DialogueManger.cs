@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Dialogue   
+public class DIalogueManger : MonoBehaviour
 {
-
-    public string name;
-    public string[] sentences;
     // Start is called before the first frame update
     void Start()
     {

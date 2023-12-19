@@ -18,7 +18,7 @@ public class Finish : MonoBehaviour
         if (collision.gameObject.name == "Player" && !LevelCompleted)
         {
             finishSound.Play();
-            Invoke("CompleteLevel", 2f);
+            Invoke("CompleteLevel", 5f);
         }
     }
 
